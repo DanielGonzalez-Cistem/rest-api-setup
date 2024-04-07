@@ -1,0 +1,21 @@
+{
+  "name": "rest-api-setup",
+  "version": "0.1.0",
+  "description": "Setup de configuración y montaje de integración REST API, apto para el desarollo de proyectos backend.",
+  "main": "index.js",
+  "type": "commonjs",
+  "private": false,
+  "scripts": {
+    "start:dev": "nodemon ./index.js",
+    "start:build": "",
+    "start": "node ./shared/dist/bundle.prod.min.js"
+  },
+  "author": "DanielGonzalez-Cistem",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5"
+  }
+}

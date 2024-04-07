@@ -1,0 +1,13 @@
+node_modules
+
+shared/logs/errors/*.txt
+shared/logs/queries/*.txt
+
+shared/ssl/*.pem
+shared/ssl/*.key
+shared/ssl/*.cert
+shared/ssl/*.crt
+
+shared/dist
+
+.env
