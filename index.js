@@ -4,11 +4,6 @@ require('dotenv').config();
 const mainApp = () => {
 
     /**
-     * @typedef {object} EnvScheme - Esquema de variables de entorno.
-     * @property {string} VERSION - Versión de producto.
-     */
-
-    /**
      * @type {EnvScheme} Variables de entorno.
      */
     const env = process.env;
