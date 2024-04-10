@@ -12,7 +12,7 @@ cd\ &
 REM Apuntamos hacia la ruta donde se aloja el proyecto
 cd ...\... & 
 REM Ejecución de servidor
-@npm run dev &
+@npm run start:dev &
 
 REM Finalización del script 
 goto End & 

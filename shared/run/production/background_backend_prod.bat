@@ -12,6 +12,8 @@ cd\ &
 REM Apuntamos hacia la ruta donde se aloja el proyecto
 cd ...\... & 
 REM Ejecución de servidor
+@npm run start:build &
+REM Ejecución de servidor
 @npm start &
 
 REM Finalización del script 
