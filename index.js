@@ -1,5 +1,5 @@
-//* Configuración de variables de entorno
-require('dotenv').config();
+//* Variables de entorno globalizados
+import 'dotenv/config';
 
 const mainApp = () => {
 
