@@ -1,3 +1,7 @@
+/**
+ * Documentación Oficial de Rollup
+ * @see https://babeljs.io/docs/
+ */
 {
     "presets": ["@babel/preset-env"]
 }
