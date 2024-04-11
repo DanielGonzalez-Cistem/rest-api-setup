@@ -3,19 +3,27 @@
   "version": "0.1.0",
   "description": "Setup de configuración y montaje de integración REST API, apto para el desarollo de proyectos backend.",
   "main": "index.js",
-  "type": "commonjs",
+  "type": "module",
   "private": false,
   "scripts": {
     "start:dev": "nodemon ./index.js",
-    "start:build": "",
+    "start:build": "rollup -c",
     "start": "node ./shared/dist/bundle.prod.min.js"
   },
   "author": "DanielGonzalez-Cistem",
   "license": "ISC",
   "devDependencies": {
-    "nodemon": "^3.1.0"
+    "@babel/core": "^7.24.4",
+    "@babel/preset-env": "^7.24.4",
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-terser": "^0.4.4",
+    "nodemon": "^3.1.0",
+    "rollup": "^4.14.1"
   },
   "dependencies": {
+    "@rollup/plugin-babel": "^6.0.4",
     "dotenv": "^16.4.5"
   }
 }
