@@ -6,8 +6,8 @@
   "type": "module",
   "private": false,
   "scripts": {
-    "start:dev": "nodemon ./index.js",
-    "start:build": "rollup -c",
+    "dev": "nodemon ./index.js",
+    "build": "rollup -c",
     "start": "node ./shared/dist/bundle.prod.min.js"
   },
   "author": "DanielGonzalez-Cistem",
