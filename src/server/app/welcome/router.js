@@ -26,6 +26,4 @@ const WelcomeRouterWrapper = ( dependencies ) => {
 
 }
 
-
-// module.exports = { appRouter };
 module.exports = { WelcomeRouterWrapper };

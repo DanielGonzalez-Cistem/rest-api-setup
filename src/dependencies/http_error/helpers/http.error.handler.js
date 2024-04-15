@@ -1,5 +1,6 @@
 //* Importaciones
 const { repositoryErrors } = require('../utils');
+const { generateLogs } = require('../../utils');
 
 /**
  * Centraliza los errores que se generán en la aplicación.
@@ -17,14 +18,14 @@ const HttpErrorHandler = ( error, req, res, next) => {
 
     if ( error.name in repositoryErrors ) {
         
-         setError = error.additionalValue === undefined
+        setError = error.additionalValue === undefined
             ? repositoryErrors[error.name]()
             : repositoryErrors[error.name](error.additionalValue);
 
     } else {
 
         setError = repositoryErrors.SERVER_ERROR(error);
-        //TODO: Integrar captura de errores en un log...
+        generateLogs({context: 'error', content: error});
 
     }
 
