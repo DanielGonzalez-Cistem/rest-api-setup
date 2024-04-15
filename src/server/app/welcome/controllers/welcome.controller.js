@@ -25,6 +25,8 @@ const WelcomeWrapper = ( dependencies ) => {
 
         try {
             
+            //NOTE: Eliminar 👇🏻 código, después de la generación de logs de errores...
+            // TestAbc();
             res.status(statusCode.OK);
             res.json({
                 message: 'Bienvenido a rest-api-setup :D',

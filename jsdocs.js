@@ -43,6 +43,14 @@
  */
 
 /**
+ * @typedef {object} HttpErrorScheme - Esquema de HttpError
+ * @property {Function} Exception - Clase personalizada para capturar errores.
+ * @property {Function} HttpErrorHandler - Función para captura y parseo de errores.
+ * @property {Function} ServiceNotFound - Función para capturar peticiones que no existan.
+ */
+
+/**
  * @typedef {object} DependenciesScheme - Esquema de dependencias.
  * @property {UtilsScheme} utils - Centralización de utilidades.
+ * @property {UtilsScheme} httpError - Centralización de control de errores.
  */

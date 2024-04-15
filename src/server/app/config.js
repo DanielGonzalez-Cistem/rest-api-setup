@@ -48,12 +48,17 @@ class AppServer {
     }
 
     routes () {
-        const PATH_API = '/api/v1/app';
+        //? Desestructuración de dependencias
+        const { httpError } = dependencies;
+        const { HttpErrorHandler, ServiceNotFound } = httpError;
 
         //? Definición de enrutadores
+        const PATH_API = '/api/v1/app';
         this.app.use(`${PATH_API}`, require('./welcome/router').WelcomeRouterWrapper(dependencies));
 
         //? Control de errores
+        this.app.use( ServiceNotFound );
+        this.app.use( HttpErrorHandler );
     }
 
 }

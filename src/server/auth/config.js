@@ -48,12 +48,17 @@ class AuthServer {
     }
 
     routes () {
-        const PATH_API = '/api/v1/auth';
+        //? Desestructuración de dependencias
+        const { httpError } = dependencies;
+        const { HttpErrorHandler, ServiceNotFound } = httpError;
 
         //? Definición de enrutadores
+        const PATH_API = '/api/v1/auth';
         this.auth.use(`${PATH_API}`, require('./welcome/router').WelcomeRouterWrapper(dependencies));
 
         //? Control de errores
+        this.auth.use( ServiceNotFound );
+        this.auth.use( HttpErrorHandler );
     }
 
 }
