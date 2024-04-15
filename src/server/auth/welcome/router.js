@@ -2,7 +2,7 @@
 const { Router } = require('express');
 
 //* Controladores
-const { WelcomeWrapper } = require('./controllers');
+const { WelcomeControllerWrapper } = require('./controllers');
 
 /**
  * Envoltorio que habilita el enrutador de prueba de conexión APP.
@@ -20,7 +20,7 @@ const WelcomeRouterWrapper = ( dependencies ) => {
         welcome: '/welcome'
     };
 
-    welcomeRouter.get(paths.welcome, WelcomeWrapper(dependencies));
+    welcomeRouter.get(paths.welcome, WelcomeControllerWrapper(dependencies));
 
     return welcomeRouter;
 

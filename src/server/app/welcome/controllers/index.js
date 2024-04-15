@@ -1,4 +1,4 @@
 //* Centralización de controladores de 'welcome'
-const { WelcomeWrapper } = require('./welcome.controller');
+const { WelcomeControllerWrapper } = require('./welcome.controller');
 
-module.exports = { WelcomeWrapper };
+module.exports = { WelcomeControllerWrapper };

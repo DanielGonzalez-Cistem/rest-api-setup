@@ -2,11 +2,11 @@
  * Envoltorio que habilita el controlador de prueba de conexión APP.
  * 
  * @function
- * @name WelcomeWrapper
+ * @name WelcomeControllerWrapper
  * @param {DependenciesScheme} dependencies - Lista de Dependencias. 
  * @returns 
  */
-const WelcomeWrapper = ( dependencies ) => {
+const WelcomeControllerWrapper = ( dependencies ) => {
 
     //? Desestructuración de dependencias
     const { utils } = dependencies;
@@ -45,4 +45,4 @@ const WelcomeWrapper = ( dependencies ) => {
 
 }
 
-module.exports = { WelcomeWrapper };
+module.exports = { WelcomeControllerWrapper };
