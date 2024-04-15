@@ -28,7 +28,7 @@ const WelcomeWrapper = ( dependencies ) => {
             res.status(statusCode.OK);
             res.json({
                 message: 'Bienvenido a rest-api-setup :D',
-                server: 'App'
+                server: 'Auth'
             });
             res.end();
     

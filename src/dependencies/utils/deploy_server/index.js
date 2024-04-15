@@ -26,13 +26,9 @@ const deployServer = ( config ) => {
     const env = process.env;
 
     const { environment, port, server } = config;
-
-    console.log(`✨ rest-api-setup v${ env.VERSION } ha sido inicializado...`);
     
     if ( env.NODE_ENV === 'production' ) {
         
-        console.log('✅ Publicando servidor HTTPS...\n');
-
         const configSSL = {
             key: fs.readFileSync( env.SSL_KEY ).toString('utf-8'),
             cert: fs.readFileSync( env.SSL_CERT ).toString('utf-8')
@@ -46,7 +42,6 @@ const deployServer = ( config ) => {
     } else {
 
         server.listen(port, () => {
-            console.log('✅ Publicando servidor HTTP...\n');
             
             const getNetworks = networks();
 
@@ -56,6 +51,7 @@ const deployServer = ( config ) => {
         });
 
     }
+
     
 }
 
