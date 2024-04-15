@@ -1,8 +1,8 @@
-import { nodeResolve } from '@rollup/plugin-node-resolve';
-import commonjs from '@rollup/plugin-commonjs';
-import terser from '@rollup/plugin-terser';
-import babel from '@rollup/plugin-babel';
-import json from '@rollup/plugin-json';
+const { nodeResolve } = require('@rollup/plugin-node-resolve');
+const babel = require('@rollup/plugin-babel');
+const commonjs = require('@rollup/plugin-commonjs');
+const json = require('@rollup/plugin-json');
+const terser = require('@rollup/plugin-terser');
 
 /**
  * Documentación Oficial de Rollup
@@ -12,10 +12,13 @@ export default {
     input: './index.js',
     output: {
         file: './shared/dist/bundle.prod.min.js',
-        format: 'esm'
+        format: 'cjs'
     },
     plugins: [
-        babel({ babelHelpers: 'bundled' }),
+        babel({ 
+            babelHelpers: 'bundled',
+            exclude: 'node_modules/**' 
+        }),
         commonjs(),
         json(),
         nodeResolve(),

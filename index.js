@@ -1,15 +1,13 @@
+//* Importaciones
+const { AppServer } = require('./src/server/app/config');
+
 //* Variables de entorno globalizados
-import 'dotenv/config';
+require('dotenv/config');
 
 const mainApp = () => {
 
-    /**
-     * @type {EnvScheme} Variables de entorno.
-     */
-    const env = process.env;
-
-    console.log('✅ Publicando servidor HTTP');
-    console.log(`✨ rest-api-setup v${ env.VERSION } ha sido inicializado...\n`);
+    const appServer = new AppServer();
+    appServer.deploy();
 
 }
 
