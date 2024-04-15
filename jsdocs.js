@@ -2,6 +2,10 @@
 
 //? Comentación de variables de entorno
 /**
+ * @typedef {'development' | 'production'} NodeEnv
+ */
+
+/**
  * @typedef {object} EnvScheme - Esquema de variables de entorno.
  * @property {NodeEnv} NODE_ENV - Tipo Entorno.
  * @property {string} VERSION - Versión de producto.
@@ -19,6 +23,26 @@
  * @property {string} DB_LOGS - Habilita los logs de consultas a base de datos.
  */
 
+//? Comentación de Dependencias
+
 /**
- * @typedef {'development' | 'production'} NodeEnv
+ * @typedef {object} StatusCodeScheme - Esquema de Códigos de Estado HTTP
+ * @property {number} BAD_REQUEST - La petición no cumple con algún criterio especifícado.
+ * @property {number} CREATED - El recurso se ha creado con éxito.
+ * @property {number} FORBIDDEN - El cliente no cuenta con permisos suficientes para acceder al recurso.
+ * @property {number} INTERNAL_SERVER_ERROR - Ha ocurrido un error en el servidor.
+ * @property {number} NOT_FOUND - El recurso no ha sido encontrado.
+ * @property {number} OK - El recurso se ha realizado con éxito.
+ * @property {number} UNAUTHORIZED - El cliente no cuenta con la atenticación requerida.
+ */
+
+/**
+ * @typedef {object} UtilsScheme - Esquema de Utils
+ * @property {Function} deployServer - Función que habilita la publicación de servidores API.
+ * @property {StatusCodeScheme} statusCode - Lista de códigos de estado HTTP.
+ */
+
+/**
+ * @typedef {object} DependenciesScheme - Esquema de dependencias.
+ * @property {UtilsScheme} utils - Centralización de utilidades.
  */

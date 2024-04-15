@@ -4,7 +4,7 @@ const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
 
-const { utils } = require('../../dependencies');
+const dependencies = require('../../dependencies');
 
 class AppServer {
 
@@ -17,16 +17,15 @@ class AppServer {
          */
         this.env = process.env;
 
-        this.paths = {
-            welcome: '/api/app/welcome'
-        }
-
         //? Precargar elementos
         this.middlewares();
+        this.routes();
 
     }
 
     deploy () {
+        const { utils } = dependencies;
+
         utils.deployServer({
             environment: 'APP',
             port: this.env.APP_PORT,
@@ -49,7 +48,12 @@ class AppServer {
     }
 
     routes () {
-        console.log('Cargando rutas del servidor APP...');
+        const PATH_API = '/api/v1/app';
+
+        //? Definición de enrutadores
+        this.app.use(`${PATH_API}`, require('./welcome/router').WelcomeRouterWrapper(dependencies));
+
+        //? Control de errores
     }
 
 }
