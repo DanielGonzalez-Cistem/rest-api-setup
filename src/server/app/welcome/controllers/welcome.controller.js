@@ -4,7 +4,7 @@
  * @function
  * @name WelcomeControllerWrapper
  * @param {DependenciesScheme} dependencies - Lista de Dependencias. 
- * @returns 
+ * @returns WelcomeController
  */
 const WelcomeControllerWrapper = ( dependencies ) => {
 
@@ -33,8 +33,10 @@ const WelcomeControllerWrapper = ( dependencies ) => {
             res.end();
     
         } catch (ErrorController) {
+
             // console.log('❌ WELCOME_CONTROLLER_ERROR: ', ErrorController);
             next(ErrorController);        
+            
         }
 
     };

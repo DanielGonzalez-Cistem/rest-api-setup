@@ -7,8 +7,8 @@ const { Users } = require('../users');
 const modelConfig = {
     tableName: 'Tasks',
     timestamps: true,
-    created_at: 'created_at',
-    updated_at: 'updated_at'
+    createdAt: 'created_at',
+    updatedAt: 'updated_at'
 }
 
 const Tasks = sequelize.define('tasks', {
@@ -47,7 +47,7 @@ const Tasks = sequelize.define('tasks', {
     },
 }, modelConfig);
 
-Users.belongsTo(Users, { foreignKey: 'id_user' }); //? 👈🏻 Relación Uno a Uno
+Tasks.belongsTo(Users, { foreignKey: 'id_user' }); //? 👈🏻 Relación Uno a Uno
 Tasks.belongsTo(TaskStatus, { foreignKey: 'id_task_status' }); //? 👈🏻 Relación Uno a Uno
 
 

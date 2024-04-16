@@ -61,6 +61,7 @@ class AppServer {
         //? Definición de enrutadores
         const PATH_API = '/api/v1/app';
         this.app.use(`${PATH_API}`, require('./welcome/router').WelcomeRouterWrapper(dependencies));
+        this.app.use(`${PATH_API}`, require('./tasks/router').TasksRouterWrapper(dependencies));
 
         //? Control de errores
         this.app.use( ServiceNotFound );

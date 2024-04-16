@@ -5,8 +5,8 @@ const { DataTypes } = require('sequelize');
 const modelConfig = {
     tableName: 'TaskStatus',
     timestamps: true,
-    created_at: 'created_at',
-    updated_at: 'updated_at'
+    createdAt: 'created_at',
+    updatedAt: 'updated_at'
 }
 
 const TaskStatus = sequelize.define('task-status', {
