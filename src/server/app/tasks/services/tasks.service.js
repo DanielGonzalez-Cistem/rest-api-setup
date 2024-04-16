@@ -1,17 +1,22 @@
 /**
+ * Envoltorio que habilita el servicio para obtener tareas.
  * 
- * @param {*} dependencies 
- * @returns 
+ * @function
+ * @name TasksServiceWrapper
+ * @param {DependenciesScheme} dependencies 
+ * @returns TasksService
  */
 const TasksServiceWrapper = ( useCases ) => {
 
     const { getAllTasks } = useCases.TaskUseCases;
 
-    //? Centralización de casos de uso
-    // const cases = {
-    //     tasks: getAllTasks(),
-    // }
-
+    /**
+     * Servicio que obtiene una lista de tareas.
+     * 
+     * @function
+     * @name TasksService
+     * @returns Lista de tareas.
+     */
     const TasksService = async () => await getAllTasks();
 
     return TasksService;

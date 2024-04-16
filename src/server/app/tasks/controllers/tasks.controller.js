@@ -18,7 +18,6 @@ const TasksControllerWrapper = ( dependencies ) => {
 
     //? Centralización de servicios
     const services = {
-        // tasks: TasksServiceWrapper.(useCases),
         tasks: TasksServiceWrapper(useCases)
     }
 
