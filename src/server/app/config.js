@@ -17,13 +17,15 @@ class AppServer {
          */
         this.env = process.env;
 
-        //? Precargar elementos
+        //? Precarga de configuraciones
         this.middlewares();
         this.routes();
 
     }
 
     deploy () {
+
+        //? Desestructuración de dependencias
         const { utils } = dependencies;
 
         utils.deployServer({
@@ -31,13 +33,14 @@ class AppServer {
             port: this.env.APP_PORT,
             server: this.app
         });
-    }
-
-    dbConnection () {
-        console.log('Conectando a base de datos...');
+        
     }
 
     middlewares () {
+
+        //? Desestructuración de dependencias
+        const { verifyConnection } = dependencies.db;
+
         if ( this.env.NODE_ENV === 'development' ) {
             this.app.use( morgan('dev') );
         }
@@ -45,9 +48,12 @@ class AppServer {
         this.app.use( cors() );
         this.app.use( helmet() );
         this.app.use( express.json() );
+        this.app.use( verifyConnection );
+
     }
 
     routes () {
+
         //? Desestructuración de dependencias
         const { httpError } = dependencies;
         const { HttpErrorHandler, ServiceNotFound } = httpError;
@@ -59,6 +65,7 @@ class AppServer {
         //? Control de errores
         this.app.use( ServiceNotFound );
         this.app.use( HttpErrorHandler );
+
     }
 
 }

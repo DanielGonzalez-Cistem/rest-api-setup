@@ -47,6 +47,7 @@ const deployServer = ( config ) => {
 
             getNetworks.forEach(client => {
                 console.log(`⚡[${environment}]: running at http://${client}:${port}`);
+                console.log('');
             });
         });
 

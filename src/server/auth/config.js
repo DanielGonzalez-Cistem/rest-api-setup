@@ -17,13 +17,15 @@ class AuthServer {
          */
         this.env = process.env;
 
-        //? Precargar elementos
+        //? Precarga de configuraciones
         this.middlewares();
         this.routes();
 
     }
 
     deploy () {
+
+        //? Desestructuración de dependencias
         const { utils } = dependencies;
 
         utils.deployServer({
@@ -31,13 +33,14 @@ class AuthServer {
             port: this.env.AUTH_PORT,
             server: this.auth
         });
-    }
 
-    dbConnection () {
-        console.log('Conectando a base de datos...');
     }
 
     middlewares () {
+
+        //? Desestructuración de dependencias
+        const { verifyConnection } = dependencies.db;
+
         if ( this.env.NODE_ENV === 'development' ) {
             this.auth.use( morgan('dev') );
         }
@@ -45,9 +48,12 @@ class AuthServer {
         this.auth.use( cors() );
         this.auth.use( helmet() );
         this.auth.use( express.json() );
+        this.auth.use( verifyConnection );
+
     }
 
     routes () {
+
         //? Desestructuración de dependencias
         const { httpError } = dependencies;
         const { HttpErrorHandler, ServiceNotFound } = httpError;
@@ -59,6 +65,7 @@ class AuthServer {
         //? Control de errores
         this.auth.use( ServiceNotFound );
         this.auth.use( HttpErrorHandler );
+
     }
 
 }

@@ -13,6 +13,14 @@ const { generateLogs } = require('../../utils');
  * @param {*} next - Función que continua el flujo de la aplicación.
  */
 const HttpErrorHandler = ( error, req, res, next) => {
+    
+    //NOTE: Descomentar 👇🏻 en caso de pruebas, comentar de vuelta al terminar.
+    // console.log('❌ ERROR_HANDLER: ', {
+    //     name: error.name,
+    //     additionalValue: error.additionalValue,
+    //     stack: error.stack,
+    //     message: error.message
+    // });
 
     let setError = {};
 
