@@ -40,6 +40,26 @@ const repositoryErrors = {
             }
         }
     },
+    TASK_NOT_FOUND: () => {
+        return {
+            success: false,
+            status_code: statusCode.NOT_FOUND,
+            error: {
+                code: 'B04',
+                message: `La tarea que intenta consultar no esta disponible`
+            }
+        }
+    },
+    STATUS_CONFLICT: () => {
+        return {
+            success: false,
+            status_code: statusCode.BAD_REQUEST,
+            error: {
+                code: 'B05',
+                message: `El estado de tarea proporcionado no es válido`
+            }
+        }
+    },
 };
 
 module.exports = { repositoryErrors };

@@ -68,7 +68,7 @@ const getOneTask = async ( id ) => {
  * 
  * @typedef {object} BodyScheme
  * @property {string} title - Título de la tarea.
- * @property {string} description - Descripción de la tarea.
+ * @property {string} task_description - Descripción de la tarea.
  * 
  * @function
  * @name createTask
@@ -77,7 +77,25 @@ const getOneTask = async ( id ) => {
  */
 const createTask = async ( body ) => await Tasks.create(body);
 
-const updateTask = async ( id ) => {};
+/**
+ * Caso de uso que actualiza una tarea en base de datos.
+ * 
+ * @typedef {object} BodyScheme
+ * @property {string} title - Título de la tarea.
+ * @property {string} task_description - Descripción de la tarea.
+ * @property {number} id_task_status - Estado de la tarea.
+ * 
+ * @param {string|number} id - Identificador de tarea.
+ * @param {BodyScheme} body - Cuerpo de la tarea.
+ * @returns Tarea.
+ */
+const updateTask = async ( id, body ) => {
+
+    return await Tasks.update(body, {
+        where: { id_task: id }
+    });
+
+};
 
 const deleteTask = async ( id ) => {};
 

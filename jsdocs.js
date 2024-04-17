@@ -76,8 +76,14 @@
  */
 
 /**
+ * @typedef {object} TaskStatusUseCasesScheme - Esquema de Task Use Cases
+ * @property {Function} getOneTaskStatus - Función para obtener una tarea.
+ */
+
+/**
  * @typedef {object} UseCasesScheme - Esquema de Use Cases
  * @property {TaskUseCasesScheme} TaskUseCases - Casos de Uso de Tareas.
+ * @property {TaskStatusUseCasesScheme} TaskStatusUseCases - Casos de Uso de Estados de Tareas.
  */
 
 /**

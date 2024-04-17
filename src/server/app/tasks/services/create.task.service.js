@@ -29,7 +29,7 @@ const CreateTaskServiceWrapper = ( helpers, useCases ) => {
         const task = {
             uuid_task: generateUUID(),
             title: body.title,
-            task_description: body.description,
+            task_description: body.task_description,
             id_user: 1
         };
         
