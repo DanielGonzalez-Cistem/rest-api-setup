@@ -3,8 +3,14 @@ const { Router } = require('express');
 
 //* Controladores
 const { 
+    CreateTaskControllerWrapper,
     TasksControllerWrapper 
 } = require('./controllers');
+
+//* Reglas
+const { 
+    CreateTaskRuleWrapper 
+} = require('./rules');
 
 const TasksRouterWrapper = ( dependencies ) => {
 
@@ -12,9 +18,19 @@ const TasksRouterWrapper = ( dependencies ) => {
 
     const paths = {
         get_all_tasks: '/tasks',
+        create_task  : '/task'
     };
 
-    tasksRouter.get(paths.get_all_tasks, TasksControllerWrapper(dependencies));
+    tasksRouter.get(
+        paths.get_all_tasks, 
+        TasksControllerWrapper(dependencies)
+    );
+
+    tasksRouter.post(
+        paths.create_task, 
+        CreateTaskRuleWrapper(dependencies.middlewares),
+        CreateTaskControllerWrapper(dependencies)
+    );
 
     return tasksRouter;
 

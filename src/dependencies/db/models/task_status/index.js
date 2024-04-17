@@ -9,7 +9,7 @@ const modelConfig = {
     updatedAt: 'updated_at'
 }
 
-const TaskStatus = sequelize.define('task-status', {
+const TaskStatus = sequelize.define('task_status', {
     id_task_status: {
         field: 'id_task_status',
         type: DataTypes.INTEGER,
