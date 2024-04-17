@@ -6,7 +6,7 @@
  * @param {DependenciesScheme} dependencies 
  * @returns TaskService
  */
-const TaskServiceWrapper = ( useCases ) => {
+const TaskServiceWrapper = ( Exception,useCases ) => {
 
     const { getOneTask } = useCases.TaskUseCases;
 
@@ -17,7 +17,15 @@ const TaskServiceWrapper = ( useCases ) => {
      * @name TaskService
      * @returns Lista de tareas.
      */
-    const TaskService = async ( id ) => await getOneTask(id);
+    const TaskService = async ( id ) => {
+
+        //* Verificar que la tarea exista
+        const task = await getOneTask(id)
+        if ( task === null ) throw new Exception('TASK_NOT_FOUND');
+
+        return task;
+
+    }
 
     return TaskService;
 

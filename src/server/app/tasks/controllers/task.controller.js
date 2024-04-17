@@ -11,14 +11,15 @@ const { TaskServiceWrapper } = require('../services');
  */
 const TaskControllerWrapper = ( dependencies ) => {
 
-    //? Desestructuración de dependencias
-    const { db, utils } = dependencies;
+    //? Desestructuración de dependencias1
+    const { db, httpError, utils } = dependencies;
     const { useCases } = db;
+    const { Exception } = httpError;
     const { statusCode } = utils;
 
     //? Centralización de servicios
     const services = {
-        task: TaskServiceWrapper(useCases)
+        task: TaskServiceWrapper(Exception, useCases)
     }
 
     /**
