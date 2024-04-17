@@ -32,7 +32,36 @@ const getAllTasks = async () => {
 
 };
 
-const getOneTask = async () => {};
+/**
+ * Caso de uso que obtiene una sola tarea de base de datos.
+ * 
+ * @function
+ * @name getOneTask
+ * @param {string|number} id - Identificador de la tarea.
+ * @returns Tarea.
+ */
+const getOneTask = async ( id ) => {
+    const excludeFields = {  
+        exclude: ['id_user', 'id_task_status', 'created_at', 'updated_at']
+    }
+
+    return await Tasks.findOne({
+        attributes: excludeFields,
+        where: { id_task: id },
+        include: [
+            {
+                model: Users,
+                attributes: ['id_user', 'username'],
+                required: true,
+            }, 
+            {
+                model: TaskStatus,
+                attributes: ['id_task_status', 'task_status_name'],
+                required: true,
+            }
+        ]
+    });
+};
 
 /**
  * Caso de uso que registra una nueva tarea en base de datos.

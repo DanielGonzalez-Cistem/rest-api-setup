@@ -1,15 +1,15 @@
 //* Importaciones
-const { TasksServiceWrapper } = require('../services');
+const { TaskServiceWrapper } = require('../services');
 
 /**
- * Envoltorio que habilita el controlador de prueba de conexión APP.
+ * Envoltorio que habilita el controlador de para obtener una sola tarea.
  * 
  * @function
- * @name TasksControllerWrapper
+ * @name TaskControllerWrapper
  * @param {DependenciesScheme} dependencies - Lista de Dependencias. 
- * @returns TasksController
+ * @returns TaskController
  */
-const TasksControllerWrapper = ( dependencies ) => {
+const TaskControllerWrapper = ( dependencies ) => {
 
     //? Desestructuración de dependencias
     const { db, utils } = dependencies;
@@ -18,44 +18,44 @@ const TasksControllerWrapper = ( dependencies ) => {
 
     //? Centralización de servicios
     const services = {
-        tasks: TasksServiceWrapper(useCases)
+        task: TaskServiceWrapper(useCases)
     }
 
     /**
-     * Controlador que obtiene una lista de tareas.
+     * Controlador que obtiene una tarea.
      * 
      * @function
-     * @name TasksController
+     * @name TaskController
      * @param {*} req - Referencia de la petición entrante.
      * @param {*} res - Referencia para retornar una respuesta.
      * @param {*} next - Función que continua el flujo de la aplicación.
      */
-    const TasksController = async (req, res, next) => {
+    const TaskController = async (req, res, next) => {
 
         try {
             
             //? Invación de servicio
-            const tasks = await services.tasks();
+            const task = await services.task(req.params.id);
 
             res.status(statusCode.OK);
             res.json({
                 success: true,
                 status_code: statusCode.OK,
-                response: tasks
+                response: task
             });
             res.end();
 
         } catch (ErrorController) {
 
-            // console.log('❌ TASKS_CONTROLLER_ERROR: ', ErrorController);
+            console.log('❌ TASK_CONTROLLER_ERROR: ', ErrorController);
             next(ErrorController);        
 
         }
 
     }
 
-    return TasksController;
+    return TaskController;
 
 }
 
-module.exports = { TasksControllerWrapper };
+module.exports = { TaskControllerWrapper };

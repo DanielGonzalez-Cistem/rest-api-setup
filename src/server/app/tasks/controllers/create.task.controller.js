@@ -50,7 +50,7 @@ const CreateTaskControllerWrapper = ( dependencies ) => {
 
         } catch (ErrorController) {
 
-            console.log('❌ CREATE_TASK_CONTROLLER_ERROR: ', ErrorController);
+            // console.log('❌ CREATE_TASK_CONTROLLER_ERROR: ', ErrorController);
             next(ErrorController);        
 
         }
