@@ -4,6 +4,7 @@ const { Router } = require('express');
 //* Controladores
 const { 
     CreateTaskControllerWrapper,
+    DeleteTaskControllerWrapper,
     TasksControllerWrapper,
     TaskControllerWrapper,
     UpdateTaskControllerWrapper 
@@ -24,7 +25,8 @@ const TasksRouterWrapper = ( dependencies ) => {
         get_all_tasks: '/tasks',
         get_task     : '/task/:id',
         create_task  : '/task',
-        update_task  : '/task/:id'
+        update_task  : '/task/:id',
+        delete_task  : '/task/:id'
     };
 
     tasksRouter.get(
@@ -51,6 +53,12 @@ const TasksRouterWrapper = ( dependencies ) => {
             UpdateTaskRuleWrapper(dependencies.middlewares)
         ],
         UpdateTaskControllerWrapper(dependencies)
+    );
+
+    tasksRouter.delete(
+        paths.delete_task,
+        TaskRuleWrapper(dependencies.middlewares),
+        DeleteTaskControllerWrapper(dependencies)
     );
 
     return tasksRouter;

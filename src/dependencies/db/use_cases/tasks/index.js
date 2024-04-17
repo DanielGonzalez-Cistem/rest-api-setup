@@ -85,6 +85,8 @@ const createTask = async ( body ) => await Tasks.create(body);
  * @property {string} task_description - Descripción de la tarea.
  * @property {number} id_task_status - Estado de la tarea.
  * 
+ * @function
+ * @name updateTask
  * @param {string|number} id - Identificador de tarea.
  * @param {BodyScheme} body - Cuerpo de la tarea.
  * @returns Tarea.
@@ -97,7 +99,14 @@ const updateTask = async ( id, body ) => {
 
 };
 
-const deleteTask = async ( id ) => {};
+/**
+ * Caso de uso para eliminar una tarea de base de datos.
+ * 
+ * @function
+ * @name deleteTask
+ * @param {string|number} id - Identificador de la tarea.
+ */
+const deleteTask = async ( id ) => await Tasks.destroy({ where: { id_task: id } });
 
 module.exports = {
     getAllTasks,
